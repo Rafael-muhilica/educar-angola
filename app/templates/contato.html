@@ -1,0 +1,870 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contatos - Educar Angola Plataforma de Ensino Online</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* Reset e configurações gerais */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        :root {
+            --primary: #2c3e50;
+            --secondary: #3498db;
+            --accent: #e74c3c;
+            --light: #ecf0f1;
+            --dark: #2c3e50;
+            --success: #2ecc71;
+            --text: #333333;
+            --text-light: #7f8c8d;
+        }
+
+        body {
+            color: var(--text);
+            line-height: 1.6;
+            background-color: #f9f9f9;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+
+        section {
+            padding: 80px 0;
+        }
+
+        h1,
+        h2,
+        h3,
+        h4 {
+            margin-bottom: 20px;
+            color: var(--primary);
+        }
+
+        h1 {
+            font-size: 2.8rem;
+            line-height: 1.2;
+        }
+
+        h2 {
+            font-size: 2.2rem;
+            margin-bottom: 50px;
+            position: relative;
+        }
+
+        h2:after {
+            content: '';
+            display: block;
+            width: 80px;
+            height: 4px;
+            background: var(--secondary);
+            margin: 15px 0;
+            border-radius: 2px;
+        }
+
+        .text-center {
+            text-align: center;
+        }
+
+        .text-center h2:after {
+            margin: 15px auto;
+        }
+
+        p {
+            margin-bottom: 20px;
+            color: var(--text-light);
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 12px 30px;
+            background: var(--secondary);
+            color: white;
+            border: none;
+            border-radius: 4px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+        }
+
+        .btn:hover {
+            background: #2980b9;
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .btn-accent {
+            background: var(--accent);
+        }
+
+        .btn-accent:hover {
+            background: #c0392b;
+        }
+
+        /* Header */
+        header {
+            background: white;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 0;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--primary);
+            text-decoration: none;
+        }
+
+        .logo span {
+            color: var(--secondary);
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+
+        nav ul li {
+            margin-left: 30px;
+        }
+
+        nav ul li a {
+            text-decoration: none;
+            color: var(--dark);
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        nav ul li a:hover {
+            color: var(--secondary);
+        }
+
+        .mobile-menu {
+            display: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        /* Hero Contatos */
+        .hero-contatos {
+            background: linear-gradient(135deg, var(--primary) 0%, #1a2530 100%);
+            color: white;
+            padding: 150px 0 100px;
+            text-align: center;
+        }
+
+        .hero-contatos h1 {
+            color: white;
+            font-size: 3rem;
+            margin-bottom: 20px;
+        }
+
+        .hero-contatos p {
+            color: var(--light);
+            font-size: 1.2rem;
+            max-width: 700px;
+            margin: 0 auto 30px;
+        }
+
+        /* Contato Info */
+        .contato-info {
+            background: white;
+        }
+
+        .info-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
+            margin-bottom: 60px;
+        }
+
+        .info-card {
+            background: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            text-align: center;
+            transition: transform 0.3s ease;
+            border-top: 4px solid var(--secondary);
+        }
+
+        .info-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .info-icon {
+            font-size: 2.5rem;
+            color: var(--secondary);
+            margin-bottom: 20px;
+        }
+
+        .info-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+        }
+
+        .info-card p {
+            margin-bottom: 10px;
+        }
+
+        /* Formulário de Contato */
+        .form-contato {
+            background: #f5f7fa;
+        }
+
+        .form-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+            align-items: start;
+        }
+
+        .form-texto h2 {
+            margin-bottom: 20px;
+        }
+
+        .form-texto p {
+            margin-bottom: 30px;
+        }
+
+        .form-destaque {
+            background: white;
+            padding: 25px;
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            margin-top: 30px;
+        }
+
+        .form-destaque h3 {
+            color: var(--secondary);
+            margin-bottom: 15px;
+        }
+
+        .formulario {
+            background: white;
+            padding: 40px;
+            border-radius: 8px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .form-group {
+            margin-bottom: 25px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 500;
+            color: var(--primary);
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 12px 15px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 1rem;
+            transition: border 0.3s;
+        }
+
+        .form-control:focus {
+            border-color: var(--secondary);
+            outline: none;
+            box-shadow: 0 0 0 2px rgba(52, 152, 219, 0.2);
+        }
+
+        textarea.form-control {
+            min-height: 150px;
+            resize: vertical;
+        }
+
+        /* Mapa */
+        .mapa {
+            background: white;
+            padding: 0;
+        }
+
+        .mapa-container {
+            height: 450px;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .mapa-placeholder {
+            height: 100%;
+            background: linear-gradient(135deg, var(--secondary) 0%, var(--primary) 100%);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            text-align: center;
+            padding: 20px;
+        }
+
+        .mapa-placeholder i {
+            font-size: 4rem;
+            margin-bottom: 20px;
+        }
+
+        /* FAQ */
+        .faq {
+            background: #f5f7fa;
+        }
+
+        .faq-container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .faq-item {
+            background: white;
+            margin-bottom: 15px;
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            overflow: hidden;
+        }
+
+        .faq-pergunta {
+            padding: 20px 30px;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-weight: 600;
+            transition: background 0.3s;
+        }
+
+        .faq-pergunta:hover {
+            background: #f9f9f9;
+        }
+
+        .faq-pergunta i {
+            transition: transform 0.3s;
+        }
+
+        .faq-resposta {
+            padding: 0 30px;
+            max-height: 0;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .faq-item.active .faq-resposta {
+            padding: 0 30px 20px;
+            max-height: 500px;
+        }
+
+        .faq-item.active .faq-pergunta i {
+            transform: rotate(180deg);
+        }
+
+        /* CTA Section */
+        .cta {
+            background: linear-gradient(135deg, var(--secondary) 0%, #2980b9 100%);
+            color: white;
+            text-align: center;
+            padding: 100px 0;
+        }
+
+        .cta h2 {
+            color: white;
+            margin-bottom: 20px;
+        }
+
+        .cta h2:after {
+            background: white;
+        }
+
+        .cta p {
+            color: var(--light);
+            max-width: 700px;
+            margin: 0 auto 30px;
+        }
+
+        /* Footer */
+        footer {
+            background: var(--dark);
+            color: white;
+            padding: 70px 0 20px;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 40px;
+            margin-bottom: 50px;
+        }
+
+        .footer-col h3 {
+            color: white;
+            font-size: 1.2rem;
+            margin-bottom: 25px;
+            position: relative;
+        }
+
+        .footer-col h3:after {
+            content: '';
+            display: block;
+            width: 40px;
+            height: 3px;
+            background: var(--secondary);
+            position: absolute;
+            bottom: -10px;
+            left: 0;
+        }
+
+        .footer-col ul {
+            list-style: none;
+        }
+
+        .footer-col ul li {
+            margin-bottom: 12px;
+        }
+
+        .footer-col ul li a {
+            color: #bdc3c7;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .footer-col ul li a:hover {
+            color: var(--secondary);
+        }
+
+        .social-links {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .social-links a {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            color: white;
+            transition: all 0.3s;
+        }
+
+        .social-links a:hover {
+            background: var(--secondary);
+            transform: translateY(-3px);
+        }
+
+        .copyright {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: #bdc3c7;
+            font-size: 0.9rem;
+        }
+
+        /* Responsividade */
+        @media (max-width: 992px) {
+            h1 {
+                font-size: 2.4rem;
+            }
+
+            h2 {
+                font-size: 1.8rem;
+            }
+
+            .hero-contatos h1 {
+                font-size: 2.5rem;
+            }
+
+            .form-container {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .mobile-menu {
+                display: block;
+            }
+
+            nav {
+                position: fixed;
+                top: 80px;
+                left: -100%;
+                width: 80%;
+                height: calc(100vh - 80px);
+                background: white;
+                transition: all 0.3s ease;
+                box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            }
+
+            nav.active {
+                left: 0;
+            }
+
+            nav ul {
+                flex-direction: column;
+                padding: 30px;
+            }
+
+            nav ul li {
+                margin: 0 0 20px 0;
+            }
+        }
+
+        @media (max-width: 576px) {
+            section {
+                padding: 60px 0;
+            }
+
+            h1 {
+                font-size: 2rem;
+            }
+
+            h2 {
+                font-size: 1.6rem;
+            }
+
+            .hero-contatos {
+                padding: 130px 0 80px;
+            }
+
+            .hero-contatos h1 {
+                font-size: 2rem;
+            }
+
+            .formulario {
+                padding: 25px;
+            }
+
+            .info-card {
+                padding: 20px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container header-container">
+            <a href="index.html" class="logo">Educar Angola</a>
+            <div class="mobile-menu">
+                <i class="fas fa-bars"></i>
+            </div>
+    </header>
+
+    <!-- Hero Contatos -->
+    <section class="hero-contatos">
+        <div class="container">
+            <h1>Estamos Aqui para Ajudar</h1>
+            <p>Entre em contato conosco para tirar suas dúvidas, obter suporte ou saber mais sobre nossos cursos. Nossa
+                equipe está pronta para atendê-lo com responsabilidade e profissionalismo.</p>
+        </div>
+    </section>
+
+    <!-- Contato Info -->
+    <section class="contato-info">
+        <div class="container">
+            <h2 class="text-center">Nossos Canais de Contato</h2>
+            <div class="info-grid">
+                <div class="info-card">
+                    <div class="info-icon">
+                        <i class="fas fa-phone-alt"></i>
+                    </div>
+                    <h3>Telefone</h3>
+                    <p><strong>244 937232463</strong></p>
+                    <p>Segunda a Sexta: 8h00 - 18h00</p>
+                    <p>Sábado: 9h00 - 13h00</p>
+                </div>
+                <div class="info-card">
+                    <div class="info-icon">
+                        <i class="fas fa-envelope"></i>
+                    </div>
+                    <h3>E-mail</h3>
+                    <p><strong>contato@educarangola.com</strong></p>
+                    <p>Suporte técnico: suporte@educarangola.com</p>
+                    <p>Respondemos em até 24h</p>
+                </div>
+                <div class="info-card">
+                    <div class="info-icon">
+                        <i class="fas fa-map-marker-alt"></i>
+                    </div>
+                    <h3>Endereço</h3>
+                    <p><strong>Luanda, Angola</strong></p>
+                    <p>Atendimento principalmente online</p>
+                    <p>Com suporte presencial agendado</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Formulário de Contato -->
+    <section class="form-contato">
+        <div class="container">
+            <div class="form-container">
+                <div class="form-texto">
+                    <h2>Envie sua Mensagem</h2>
+                    <p>Preencha o formulário ao lado e entraremos em contato o mais breve possível. Estamos
+                        comprometidos em responder todas as suas questões com atenção e responsabilidade.</p>
+
+                    <div class="form-destaque">
+                        <h3>Compromisso com Você</h3>
+                        <p>Na Educar Angola, valorizamos cada contato e nos comprometemos a:</p>
+                        <ul>
+                            <li>Responder todas as mensagens em até 24 horas</li>
+                            <li>Oferecer soluções personalizadas para suas necessidades</li>
+                            <li>Manter um atendimento transparente e ético</li>
+                            <li>Garantir sua satisfação com nossos serviços</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="formulario">
+                    <form id="formContato">
+                        <div class="form-group">
+                            <label for="nome">Nome Completo *</label>
+                            <input type="text" id="nome" class="form-control" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="email">E-mail *</label>
+                            <input type="email" id="email" class="form-control" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="telefone">Telefone</label>
+                            <input type="tel" id="telefone" class="form-control">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="assunto">Assunto *</label>
+                            <select id="assunto" class="form-control" required>
+                                <option value="">Selecione um assunto</option>
+                                <option value="duvida">Dúvida sobre cursos</option>
+                                <option value="suporte">Suporte técnico</option>
+                                <option value="parceria">Proposta de parceria</option>
+                                <option value="outro">Outro</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="mensagem">Mensagem *</label>
+                            <textarea id="mensagem" class="form-control" required></textarea>
+                        </div>
+
+                        <button type="submit" class="btn btn-accent" style="width: 100%;">Enviar Mensagem</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Mapa -->
+    <section class="mapa">
+        <div class="container">
+            <h2 class="text-center">Nossa Localização</h2>
+            <div class="mapa-container">
+                <div class="mapa-placeholder">
+                    <i class="fas fa-map-marked-alt"></i>
+                    <h3>Talatona, Luanda, Angola</h3>
+                    <p>Atendemos alunos em todas as províncias de Angola</p>
+                    <p>Agende uma visita presencial quando necessário</p>
+                </div>
+                <!-- Em um site real, substituir por iframe do Google Maps -->
+                <!-- <iframe src="https://www.google.com/maps/embed?pb=..." width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy"></iframe> -->
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ -->
+    <section class="faq">
+        <div class="container">
+            <h2 class="text-center">Perguntas Frequentes</h2>
+            <div class="faq-container">
+                <div class="faq-item">
+                    <div class="faq-pergunta">
+                        <span>Como posso me inscrever em um curso?</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-resposta">
+                        <p>Para se inscrever em um dos nossos cursos, basta acessar a página de cursos, escolher o curso
+                            desejado e clicar em "Inscrever-se". Você será redirecionado para um formulário de inscrição
+                            onde poderá preencher seus dados e efetuar o pagamento.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-pergunta">
+
+                        <div class="faq-item">
+                            <div class="faq-pergunta">
+                                <span>Os certificados são reconhecidos?</span>
+                                <i class="fas fa-chevron-down"></i>
+                            </div>
+                            <div class="faq-resposta">
+                                <p>Sim, todos os nossos cursos emitem certificados de conclusão válidos em todo
+                                    território
+                                    nacional. Nossos certificados contêm código de autenticação que pode ser verificado
+                                    em nosso
+                                    site, garantindo sua validade.</p>
+                            </div>
+                        </div>
+
+                        <div class="faq-item">
+                            <div class="faq-pergunta">
+                                <span>Como funciona o suporte aos alunos?</span>
+                                <i class="fas fa-chevron-down"></i>
+                            </div>
+                            <div class="faq-resposta">
+                                <p>Oferecemos suporte técnico e pedagógico completo para nossos alunos. Você pode entrar
+                                    em
+                                    contato por e-mail, telefone ou através da plataforma de ensino. Nossa equipe está
+                                    disponível de segunda a sexta, das 8h às 18h, e aos sábados das 9h às 13h.</p>
+                            </div>
+                        </div>
+
+                        <div class="faq-item">
+                            <div class="faq-pergunta">
+                                <span>Posso acessar os cursos pelo celular?</span>
+                                <i class="fas fa-chevron-down"></i>
+                            </div>
+                            <div class="faq-resposta">
+                                <p>Sim, nossa plataforma é totalmente responsiva e adaptada para funcionar perfeitamente
+                                    em
+                                    dispositivos móveis. Você pode acessar os cursos, assistir às aulas e realizar
+                                    atividades
+                                    pelo seu smartphone ou tablet.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta">
+        <div class="container">
+            <h2>Pronto para Transformar sua Carreira?</h2>
+            <p>Junte-se a milhares de angolanos que já estão investindo em sua educação e futuro com a Educar Angola.
+            </p>
+            <a href="{{url_for('auth.sobre')}}" class="btn btn-accent">Ver Cursos Disponíveis</a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <h3>Educar Angola</h3>
+                    <p>Transformando vidas através da educação online de qualidade em Angola.</p>
+                </div>
+                <div class="footer-col">
+                    <h3>Cursos</h3>
+                    <ul>
+                        <li><a href="#">Inteligência Artificial</a></li>
+                        <li><a href="#">Redes de Computadores</a></li>
+                        <li><a href="#">Programação Python</a></li>
+                        <li><a href="#">HTML5 e CSS3</a></li>
+                        <li><a href="#">Inglês Básico</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h3>Links Rápidos</h3>
+                    <ul>
+                        <li><a href="{{url_for('auth.inicio')}}">Início</a></li>
+                        <li><a href="{{url_for('auth.sobre')}}">Sobre Nós</a></li>
+                        <li><a href="{{url_for('auth.contato')}}">Contato</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h3>Contato</h3>
+                    <ul>
+                        <li><i class="fas fa-envelope"></i> contato@educarangola.com</li>
+                        <li><i class="fas fa-phone"></i> 244 937232463</li>
+                        <li><i class="fas fa-map-marker-alt"></i> Luanda, Angola</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2025 Educar Angola. Todos os direitos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Menu mobile
+        document.querySelector('.mobile-menu').addEventListener('click', function () {
+            document.querySelector('nav').classList.toggle('active');
+        });
+
+        // Fechar menu ao clicar em um link
+        document.querySelectorAll('nav ul li a').forEach(item => {
+            item.addEventListener('click', function () {
+                document.querySelector('nav').classList.remove('active');
+            });
+        });
+
+        // FAQ Accordion
+        document.querySelectorAll('.faq-pergunta').forEach(item => {
+            item.addEventListener('click', function () {
+                const parent = this.parentNode;
+                parent.classList.toggle('active');
+            });
+        });
+
+        // Form submission
+        document.getElementById('formContato').addEventListener('submit', function (e) {
+            e.preventDefault();
+
+            // Aqui normalmente enviaria os dados para um servidor
+            // Por enquanto, apenas mostra uma mensagem de sucesso
+            alert('Obrigado por entrar em contato! Responderemos em breve.');
+            this.reset();
+        });
+
+        // Scroll suave para âncoras
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+
+                const targetId = this.getAttribute('href');
+                if (targetId === '#') return;
+
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+
+</html>
