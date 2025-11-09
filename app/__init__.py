@@ -2,51 +2,11 @@ from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
 from flask_migrate import Migrate
 from flask_bootstrap import Bootstrap
-import traceback  # 🔴 ADICIONE ESTA LINHA NO TOPO
-import sys       # 🔴 ADICIONE ESTA LINHA NO TOPO
-
 
 db = SQLAlchemy()
 migrate = Migrate()
 bootstrap = Bootstrap()
 
-import sys
-import pkgutil
-
-# Verifica se todos os módulos necessários estão instalados
-required_modules = ['flask', 'flask_sqlalchemy', 'flask_migrate', 'flask_bootstrap', 'gunicorn']
-missing_modules = []
-
-for module in required_modules:
-    try:
-        pkgutil.find_loader(module)
-        print(f"✅ {module} encontrado!")
-    except ImportError:
-        missing_modules.append(module)
-        print(f"❌ {module} NÃO ENCONTRADO!")
-
-if missing_modules:
-    print(f"\n🚨 FALTA INSTALAR OS SEGUINTES MÓDULOS: {', '.join(missing_modules)}")
-    print("👉 Execute: pip install -r requirements.txt")
-    sys.exit(1)import sys
-import pkgutil
-
-# Verifica se todos os módulos necessários estão instalados
-required_modules = ['flask', 'flask_sqlalchemy', 'flask_migrate', 'flask_bootstrap', 'gunicorn']
-missing_modules = []
-
-for module in required_modules:
-    try:
-        pkgutil.find_loader(module)
-        print(f"✅ {module} encontrado!")
-    except ImportError:
-        missing_modules.append(module)
-        print(f"❌ {module} NÃO ENCONTRADO!")
-
-if missing_modules:
-    print(f"\n🚨 FALTA INSTALAR OS SEGUINTES MÓDULOS: {', '.join(missing_modules)}")
-    print("👉 Execute: pip install -r requirements.txt")
-    sys.exit(1)
 def create_app(config_object='config.Config'):
     app = Flask(
         __name__, 
@@ -65,21 +25,3 @@ def create_app(config_object='config.Config'):
     app.register_blueprint(auth)
 
     return app
-
-# 🔴 🔴 🔴 ADICIONE ESTE BLOCO NO FINAL DO ARQUIVO 🔴 🔴 🔴
-if __name__ == "__main__":
-    # Este bloco é para execução local (flask run)
-    app = create_app()
-    app.run(host='0.0.0.0', port=5000, debug=True)
-else:
-    # Este bloco é para o Render (produção)
-    try:
-        print("🔄 Inicializando aplicação Flask para produção...")
-        app = create_app()
-        print("✅ Aplicação Flask inicializada com sucesso!")
-    except Exception as e:
-        print("\n❌❌❌ ERRO FATAL AO INICIALIZAR O APP NO RENDER ❌❌❌", file=sys.stderr)
-        print("Detalhes do erro:", file=sys.stderr)
-        print(traceback.format_exc(), file=sys.stderr)
-        print("\n💡 DICA: Verifique os logs acima para identificar o problema.", file=sys.stderr)
-        sys.exit(1)  # Força a saída com código de erro
