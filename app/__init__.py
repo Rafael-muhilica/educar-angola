@@ -25,3 +25,6 @@ def create_app(config_object='config.Config'):
     app.register_blueprint(auth)
 
     return app
+
+# 🔥 🔥 🔥 ESTA LINHA É CRUCIAL PARA O RENDER 🔥 🔥 🔥
+app = create_app()
