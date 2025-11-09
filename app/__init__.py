@@ -10,6 +10,43 @@ db = SQLAlchemy()
 migrate = Migrate()
 bootstrap = Bootstrap()
 
+import sys
+import pkgutil
+
+# Verifica se todos os módulos necessários estão instalados
+required_modules = ['flask', 'flask_sqlalchemy', 'flask_migrate', 'flask_bootstrap', 'gunicorn']
+missing_modules = []
+
+for module in required_modules:
+    try:
+        pkgutil.find_loader(module)
+        print(f"✅ {module} encontrado!")
+    except ImportError:
+        missing_modules.append(module)
+        print(f"❌ {module} NÃO ENCONTRADO!")
+
+if missing_modules:
+    print(f"\n🚨 FALTA INSTALAR OS SEGUINTES MÓDULOS: {', '.join(missing_modules)}")
+    print("👉 Execute: pip install -r requirements.txt")
+    sys.exit(1)import sys
+import pkgutil
+
+# Verifica se todos os módulos necessários estão instalados
+required_modules = ['flask', 'flask_sqlalchemy', 'flask_migrate', 'flask_bootstrap', 'gunicorn']
+missing_modules = []
+
+for module in required_modules:
+    try:
+        pkgutil.find_loader(module)
+        print(f"✅ {module} encontrado!")
+    except ImportError:
+        missing_modules.append(module)
+        print(f"❌ {module} NÃO ENCONTRADO!")
+
+if missing_modules:
+    print(f"\n🚨 FALTA INSTALAR OS SEGUINTES MÓDULOS: {', '.join(missing_modules)}")
+    print("👉 Execute: pip install -r requirements.txt")
+    sys.exit(1)
 def create_app(config_object='config.Config'):
     app = Flask(
         __name__, 
